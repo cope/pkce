@@ -1,0 +1,1 @@
+describe('pkce.type.ts tests', () => it('should be implemented'));
