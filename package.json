@@ -1,5 +1,5 @@
 {
-	"name": "pkce",
+	"name": "pkce-codes",
 	"version": "0.0.1",
 	"description": "Create code_verifier and code_challenge values",
 	"engines": {
