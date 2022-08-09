@@ -1,10 +1,6 @@
 'use strict';
 
-import sha256 from './sha256';
-import base64urlencode from './base64urlencode';
+import {enc, SHA256} from "crypto-js";
 
-const createCodeChallenge = async (codeVerfier: string): Promise<string> => {
-	const codeSha: ArrayBuffer = await sha256(codeVerfier);
-	return base64urlencode(codeSha);
-};
+const createCodeChallenge = (codeVerfier: string): string => SHA256(codeVerfier).toString(enc.Base64url);
 export default createCodeChallenge;
