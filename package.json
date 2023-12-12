@@ -1,6 +1,6 @@
 {
 	"name": "pkce-codes",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Create code_verifier and code_challenge values",
 	"engines": {
 		"node": ">=16.0.0"

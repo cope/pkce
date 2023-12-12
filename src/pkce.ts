@@ -5,8 +5,8 @@ import createCodeChallenge from './create.code.challenge';
 import createCodeVerifier from './create.code.verifier';
 
 const pkce = (): pkceType => {
-	const codeVerfier = createCodeVerifier();
-	const codeChallenge = createCodeChallenge(codeVerfier);
-	return {code_verfier: codeVerfier, code_challenge: codeChallenge};
+	const codeVerifier = createCodeVerifier();
+	const codeChallenge = createCodeChallenge(codeVerifier);
+	return {code_verifier: codeVerifier, code_challenge: codeChallenge};
 };
 export default pkce;

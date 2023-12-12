@@ -2,5 +2,5 @@
 
 import {enc, SHA256} from "crypto-js";
 
-const createCodeChallenge = (codeVerfier: string): string => SHA256(codeVerfier).toString(enc.Base64url);
+const createCodeChallenge = (codeVerifier: string): string => SHA256(codeVerifier).toString(enc.Base64url);
 export default createCodeChallenge;
