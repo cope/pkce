@@ -1,0 +1,10 @@
+node_modules/
+lib/
+dist/
+coverage/
+docs/
+*.d.ts
+*.js
+jest.config.js
+.eslintrc.js
+.prettierrc.js 
