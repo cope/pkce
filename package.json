@@ -15,7 +15,7 @@
 		"lint:fix": "eslint src/**/*.ts test/**/*.ts --fix",
 		"clean": "eslint src/**/*.ts test/**/*.ts --fix",
 		"docs": "typedoc --readme none --out docs src",
-		"test": "jest",
+		"test": "jest --coverage --config jest.config.js",
 		"test:watch": "jest --watch",
 		"test:coverage": "jest --coverage",
 		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
