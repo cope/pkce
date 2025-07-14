@@ -1,0 +1,10 @@
+{
+	"srcFolderName": "src",
+	"filesExtension": "ts",
+	"testFolderName": "test",
+	"testFileExtensionPrefix": "spec",
+	"ignoreSrcFiles": [],
+	"ignoreTestFiles": [
+		"test/specialized/"
+	]
+}
