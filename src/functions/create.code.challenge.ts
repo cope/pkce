@@ -1,6 +1,6 @@
 'use strict';
 
-import {createHash} from 'crypto';
+import {enc, SHA256} from 'crypto-js';
 import validateCodeVerifier from './validate.code.verifier';
 
 /**
@@ -11,7 +11,7 @@ import validateCodeVerifier from './validate.code.verifier';
  */
 const createCodeChallenge = (codeVerifier: string): string => {
 	validateCodeVerifier(codeVerifier);
-	return createHash('sha256').update(codeVerifier).digest('base64url');
+	return SHA256(codeVerifier).toString(enc.Base64url);
 };
 
 export default createCodeChallenge;
