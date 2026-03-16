@@ -13,7 +13,8 @@
 		"declaration": true,
 		"rootDir": "./src",
 		"outDir": "./lib",
-		"strict": true
+		"strict": true,
+		"skipLibCheck": true
 	},
 	"include": [
 		"src/**/*"

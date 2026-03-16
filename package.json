@@ -1,15 +1,23 @@
 {
 	"name": "pkce-codes",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "Create code_verifier and code_challenge values",
 	"engines": {
 		"node": ">=16.0.0"
 	},
 	"main": "./lib/pkce.js",
+	"module": "./lib/esm/pkce.js",
 	"types": "./lib/pkce.d.ts",
+	"exports": {
+		".": {
+			"import": "./lib/esm/pkce.js",
+			"require": "./lib/pkce.js",
+			"types": "./lib/pkce.d.ts"
+		}
+	},
 	"scripts": {
 		"all": "pnpm i & tsc & pnpm format & pnpm clean & pnpm build & pnpm test & pnpm docs",
-		"build": "del /S /Q lib\\* && tsc",
+		"build": "del /S /Q lib\\* && tsc && tsc -p tsconfig.esm.json",
 		"build:watch": "tsc --watch",
 		"lint": "eslint src/**/*.ts test/**/*.ts",
 		"lint:fix": "eslint src/**/*.ts test/**/*.ts --fix",
@@ -46,22 +54,22 @@
 	},
 	"devDependencies": {
 		"@types/jest": "^30.0.0",
-		"@types/node": "^24.3.0",
-		"@typescript-eslint/eslint-plugin": "^8.41.0",
-		"@typescript-eslint/parser": "^8.41.0",
+		"@types/node": "^25.5.0",
+		"@typescript-eslint/eslint-plugin": "^8.57.0",
+		"@typescript-eslint/parser": "^8.57.0",
 		"coveralls": "^3.1.1",
-		"eslint": "^9.34.0",
+		"eslint": "^10.0.3",
 		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-jest": "^29.0.1",
-		"eslint-plugin-prettier": "^5.5.4",
-		"fast-check": "^4.3.0",
-		"jest": "^30.1.2",
-		"prettier": "^3.6.2",
+		"eslint-plugin-jest": "^29.15.0",
+		"eslint-plugin-prettier": "^5.5.5",
+		"fast-check": "^4.6.0",
+		"jest": "^30.3.0",
+		"prettier": "^3.8.1",
 		"sonarjs": "^1.0.0",
 		"source-map-support": "^0.5.21",
-		"ts-jest": "^29.4.1",
-		"typedoc": "^0.28.12",
-		"typescript": "^5.9.2"
+		"ts-jest": "^29.4.6",
+		"typedoc": "^0.28.17",
+		"typescript": "^5.9.3"
 	},
-	"packageManager": "pnpm@10.13.1"
+	"packageManager": "pnpm@10.32.1"
 }
