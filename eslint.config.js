@@ -38,23 +38,19 @@ module.exports = [
 			...jest.configs.recommended.rules,
 			...prettierConfig.rules,
 
-			// TypeScript specific rules
 			'@typescript-eslint/explicit-function-return-type': 'off',
 			'@typescript-eslint/explicit-module-boundary-types': 'off',
 			'@typescript-eslint/no-explicit-any': 'warn',
 			'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 			'@typescript-eslint/no-var-requires': 'error',
 
-			// General ESLint rules
-			'no-console': 'off', // Allow console.log for this project
+			'no-console': 'off',
 			'no-debugger': 'error',
 			'prefer-const': 'error',
 			'no-var': 'error',
 
-			// Code style rules (handled by Prettier)
 			'prettier/prettier': 'error',
 
-			// Jest specific rules
 			'jest/no-disabled-tests': 'warn',
 			'jest/no-focused-tests': 'error',
 			'jest/no-identical-title': 'error',
@@ -62,7 +58,6 @@ module.exports = [
 			'jest/valid-expect': 'error',
 			'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'fc.assert'] }],
 
-			// Code quality rules
 			'curly': ['error', 'multi-line'],
 			'max-classes-per-file': ['error', 5],
 			'no-multiple-empty-lines': ['error', { max: 1 }],

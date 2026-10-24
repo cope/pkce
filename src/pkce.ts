@@ -1,7 +1,7 @@
 'use strict';
 
-import createCodeVerifier from './functions/create.code.verifier';
-import createCodeChallenge from './functions/create.code.challenge';
+import createCodeVerifier from './functions/create.code.verifier.js';
+import createCodeChallenge from './functions/create.code.challenge.js';
 
 class pkce {
 	static generate(): {code_verifier: string; code_challenge: string; code_challenge_method: string} {

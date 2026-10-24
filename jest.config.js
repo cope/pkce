@@ -3,10 +3,8 @@ module.exports = {
 	testEnvironment: 'node',
 	roots: ['<rootDir>/src', '<rootDir>/test'],
 
-	// Test file patterns
 	testMatch: ['**/test/**/*.spec.ts'],
 
-	// TypeScript configuration
 	transform: {
 		'^.+\\.ts$': [
 			'ts-jest',
@@ -16,22 +14,17 @@ module.exports = {
 		]
 	},
 
-	// Module file extensions
 	moduleFileExtensions: ['ts', 'js', 'json'],
+	moduleNameMapper: {'^(\\.{1,2}/.*)\\.js$': '$1'},
 
-	// Setup Jest types globally
 	setupFilesAfterEnv: [],
 
-	// Coverage configuration
 	collectCoverageFrom: ['src/**/*.ts', '!src/**/*.d.ts', '!src/**/*.spec.ts', '!src/**/*.test.ts'],
 
-	// Coverage output directory
 	coverageDirectory: 'coverage',
 
-	// Coverage reporters
 	coverageReporters: ['lcov', 'html', 'text', 'text-summary'],
 
-	// Coverage thresholds (optional)
 	coverageThreshold: {
 		global: {
 			branches: 80,
@@ -41,15 +34,7 @@ module.exports = {
 		}
 	},
 
-	// Clear mocks between tests
 	clearMocks: true,
 
-	// Verbose output
-	// verbose: true,
-
-	// Exit on test failure
-	// forceExit: true,
-
-	// Timeout for tests (30 seconds like mocha config)
 	testTimeout: 30000
 };

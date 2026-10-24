@@ -9,6 +9,10 @@ describe('createCodeChallenge tests', () => {
 		expect(typeof createCodeChallenge).toBe('function');
 	});
 
+	it('should match the RFC 7636 appendix B example', () => {
+		expect(createCodeChallenge('dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk')).toBe('E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM');
+	});
+
 	it('should generate consistent challenge for same verifier', () => {
 		const verifier = createCodeVerifier();
 		const challenge1 = createCodeChallenge(verifier);

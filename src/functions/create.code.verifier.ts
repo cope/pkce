@@ -1,15 +1,7 @@
 'use strict';
 
-const createCodeVerifier = (): string => {
-	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
-	const length = Math.floor(Math.random() * (128 - 43 + 1)) + 43;
-	const result = new Array(length);
+import {randomBytes} from 'node:crypto';
 
-	for (let i = 0; i < length; i++) {
-		result[i] = chars.charAt(Math.floor(Math.random() * chars.length));
-	}
-
-	return result.join('');
-};
+const createCodeVerifier = (): string => randomBytes(32).toString('base64url');
 
 export default createCodeVerifier;

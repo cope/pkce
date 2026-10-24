@@ -1,9 +1,7 @@
 'use strict';
 
-import {enc, SHA256} from 'crypto-js';
+import {createHash} from 'node:crypto';
 
-const createCodeChallenge = (codeVerifier: string): string => {
-	return SHA256(codeVerifier).toString(enc.Base64url);
-};
+const createCodeChallenge = (codeVerifier: string): string => createHash('sha256').update(codeVerifier).digest('base64url');
 
 export default createCodeChallenge;

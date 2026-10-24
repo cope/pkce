@@ -24,6 +24,17 @@ describe('createCodeVerifier tests', () => {
 		}
 	});
 
+	it('should not use Math.random', () => {
+		const random = jest.spyOn(Math, 'random');
+		createCodeVerifier();
+		expect(random).not.toHaveBeenCalled();
+		random.mockRestore();
+	});
+
+	it('should encode 32 random bytes as 43 base64url characters', () => {
+		expect(createCodeVerifier()).toMatch(/^[A-Za-z0-9_-]{43}$/);
+	});
+
 	it('should generate different verifiers on subsequent calls', () => {
 		const verifier1 = createCodeVerifier();
 		const verifier2 = createCodeVerifier();
