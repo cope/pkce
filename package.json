@@ -1,6 +1,6 @@
 {
 	"name": "pkce-codes",
-	"version": "0.2.5",
+	"version": "0.3.0",
 	"description": "Create code_verifier and code_challenge values",
 	"engines": {
 		"node": ">=22.11.0"
@@ -50,11 +50,11 @@
 	"homepage": "https://github.com/cope/pkce#readme",
 	"devDependencies": {
 		"@types/jest": "^30.0.0",
-		"@types/node": "^26.6.5",
-		"@typescript-eslint/eslint-plugin": "^8.72.0",
-		"@typescript-eslint/parser": "^8.72.0",
+		"@types/node": "^26.6.6",
+		"@typescript-eslint/eslint-plugin": "^8.72.1",
+		"@typescript-eslint/parser": "^8.72.1",
 		"coveralls": "^3.1.1",
-		"eslint": "^10.13.0",
+		"eslint": "^10.14.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-jest": "^29.17.0",
 		"eslint-plugin-prettier": "^5.5.7",
@@ -67,5 +67,5 @@
 		"typedoc": "^0.28.20",
 		"typescript": "^6.0.2"
 	},
-	"packageManager": "pnpm@12.15.0"
+	"packageManager": "pnpm@12.16.1"
 }
