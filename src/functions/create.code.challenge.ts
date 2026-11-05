@@ -1,7 +1,9 @@
 'use strict';
 
-import {createHash} from 'node:crypto';
+import {sha256} from '@noble/hashes/sha2';
+import {utf8ToBytes} from '@noble/hashes/utils';
+import toBase64Url from './to.base64url';
 
-const createCodeChallenge = (codeVerifier: string): string => createHash('sha256').update(codeVerifier).digest('base64url');
+const createCodeChallenge = (codeVerifier: string): string => toBase64Url(sha256(utf8ToBytes(codeVerifier)));
 
 export default createCodeChallenge;

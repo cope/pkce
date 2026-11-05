@@ -1,9 +1,9 @@
 {
 	"name": "pkce-codes",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"description": "Create code_verifier and code_challenge values",
 	"engines": {
-		"node": ">=22.11.0"
+		"node": ">=26.12.1"
 	},
 	"main": "./lib/pkce.js",
 	"module": "./lib/esm/pkce.js",
@@ -65,5 +65,8 @@
 		"typedoc": "^0.28.20",
 		"typescript": "^6.0.3"
 	},
-	"packageManager": "pnpm@12.16.1"
+	"packageManager": "pnpm@12.16.1",
+	"dependencies": {
+		"@noble/hashes": "1.8.0"
+	}
 }

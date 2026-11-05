@@ -1,7 +1,7 @@
 'use strict';
 
-import {randomBytes} from 'node:crypto';
+import toBase64Url from './to.base64url';
 
-const createCodeVerifier = (): string => randomBytes(32).toString('base64url');
+const createCodeVerifier = (): string => toBase64Url(crypto.getRandomValues(new Uint8Array(32)));
 
 export default createCodeVerifier;
