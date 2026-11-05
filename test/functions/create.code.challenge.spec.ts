@@ -13,6 +13,24 @@ describe('createCodeChallenge tests', () => {
 		expect(createCodeChallenge('dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk')).toBe('E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM');
 	});
 
+	it('should match the SHA-256 of abc, base64url encoded without padding', () => {
+		expect(createCodeChallenge('abc')).toBe('ungWv48Bz-pBQUDeXa4iI7ADYaOWF3qctBD_YfIAFa0');
+	});
+
+	it('should hash non-ascii verifiers as utf-8', () => {
+		expect(createCodeChallenge('é')).toBe('SplVfkAzw1Od4utlRyAXytX5VX96BiWgnxw_biumnEw');
+	});
+
+	it('should work without Buffer', () => {
+		const original = global.Buffer;
+		Object.defineProperty(global, 'Buffer', {value: undefined, configurable: true});
+		try {
+			expect(createCodeChallenge('dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk')).toBe('E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM');
+		} finally {
+			Object.defineProperty(global, 'Buffer', {value: original, configurable: true});
+		}
+	});
+
 	it('should generate consistent challenge for same verifier', () => {
 		const verifier = createCodeVerifier();
 		const challenge1 = createCodeChallenge(verifier);

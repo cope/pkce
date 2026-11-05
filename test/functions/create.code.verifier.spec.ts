@@ -35,6 +35,33 @@ describe('createCodeVerifier tests', () => {
 		expect(createCodeVerifier()).toMatch(/^[A-Za-z0-9_-]{43}$/);
 	});
 
+	it('should request 32 bytes from crypto.getRandomValues', () => {
+		const spy = jest.spyOn(crypto, 'getRandomValues');
+		createCodeVerifier();
+		expect(spy).toHaveBeenCalledTimes(1);
+		expect(spy.mock.calls[0][0] as Uint8Array).toHaveLength(32);
+		spy.mockRestore();
+	});
+
+	it('should encode the random bytes it receives', () => {
+		const spy = jest.spyOn(crypto, 'getRandomValues').mockImplementation(<T extends ArrayBufferView | null>(array: T): T => {
+			(array as unknown as Uint8Array).fill(0xfb);
+			return array;
+		});
+		expect(createCodeVerifier()).toBe('-_v7-_v7-_v7-_v7-_v7-_v7-_v7-_v7-_v7-_v7-_s');
+		spy.mockRestore();
+	});
+
+	it('should work without Buffer', () => {
+		const original = global.Buffer;
+		Object.defineProperty(global, 'Buffer', {value: undefined, configurable: true});
+		try {
+			expect(createCodeVerifier()).toMatch(/^[A-Za-z0-9_-]{43}$/);
+		} finally {
+			Object.defineProperty(global, 'Buffer', {value: original, configurable: true});
+		}
+	});
+
 	it('should generate different verifiers on subsequent calls', () => {
 		const verifier1 = createCodeVerifier();
 		const verifier2 = createCodeVerifier();
