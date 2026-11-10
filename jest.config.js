@@ -6,13 +6,14 @@ module.exports = {
 	testMatch: ['**/test/**/*.spec.ts'],
 
 	transform: {
-		'^.+\\.ts$': [
+		'^.+\\.[tj]s$': [
 			'ts-jest',
 			{
 				tsconfig: '<rootDir>/tsconfig.jest.json'
 			}
 		]
 	},
+	transformIgnorePatterns: ['/node_modules/(?!(\\.pnpm/)?@noble)'],
 
 	moduleFileExtensions: ['ts', 'js', 'json'],
 	moduleNameMapper: {'^(\\.{1,2}/.*)\\.js$': '$1'},

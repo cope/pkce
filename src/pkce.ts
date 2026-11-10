@@ -16,4 +16,5 @@ class pkce {
 	}
 }
 
+export const generate = pkce.generate;
 export default pkce;

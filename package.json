@@ -1,22 +1,27 @@
 {
 	"name": "pkce-codes",
-	"version": "0.3.3",
+	"version": "0.4.0",
 	"description": "Create code_verifier and code_challenge values",
 	"engines": {
-		"node": ">=26.12.1"
+		"node": ">=24.6.0"
 	},
 	"main": "./lib/pkce.js",
 	"module": "./lib/esm/pkce.js",
 	"types": "./lib/pkce.d.ts",
 	"exports": {
 		".": {
-			"import": "./lib/esm/pkce.js",
-			"require": "./lib/pkce.js",
-			"types": "./lib/pkce.d.ts"
+			"import": {
+				"types": "./lib/esm/pkce.d.ts",
+				"default": "./lib/esm/pkce.js"
+			},
+			"require": {
+				"types": "./lib/pkce.d.ts",
+				"default": "./lib/pkce.js"
+			}
 		}
 	},
 	"scripts": {
-		"all": "pnpm i && pnpm run format && pnpm run clean && pnpm run build && pnpm run test && pnpm run docs",
+		"all": "pnpm i && pnpm run format && pnpm run clean && pnpm run build && pnpm run test:esm && pnpm run test && pnpm run docs",
 		"build": "node -e \"require('fs').rmSync('lib',{recursive:true,force:true})\" && tsc && tsc -p tsconfig.esm.json && node -e \"require('fs').writeFileSync('lib/esm/package.json',JSON.stringify({type:'module'}))\"",
 		"build:watch": "tsc --watch",
 		"lint": "eslint src/**/*.ts test/**/*.ts",
@@ -24,6 +29,7 @@
 		"clean": "eslint src/**/*.ts test/**/*.ts --fix",
 		"docs": "typedoc --readme none --out docs src/pkce.ts",
 		"test": "jest --coverage --config jest.config.js",
+		"test:esm": "node test/esm.check.mjs",
 		"test:watch": "jest --watch",
 		"test:coverage": "jest --coverage",
 		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -67,6 +73,6 @@
 	},
 	"packageManager": "pnpm@12.16.1",
 	"dependencies": {
-		"@noble/hashes": "1.8.0"
+		"@noble/hashes": "2.4.0"
 	}
 }
